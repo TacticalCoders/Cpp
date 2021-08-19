@@ -2,6 +2,41 @@
 //#include "new.h" 에 "struct.h"가 또 정의되어 있다면, 에러가 발생하게 된다. 
 //분할 컴파일 : 헤더 부분에 들어가는 요소를 하나의 헤더파일로 만들고, 이를 이용하여 함수를 또 다른 cpp 파일로 재정의 하는 기법.
 
+/* 	-----struct.h-----
+
+	#ifndef STRUCT // 이 구문을 추가해 주어 헤더파일의 중복 정의를 막을 수 있다. 
+	#define STRUCT
+	#include <iostream>
+
+	using namespace std;
+
+	struct MyStruct
+	{
+	    string name;
+	    int age;
+	};
+
+	void display(MyStruct&);
+
+	#endif
+	
+  	--------------------     */
+
+
+
+
+/* 	-----func.cpp-----
+
+	#include "struct.h"
+
+	void display(MyStruct& temp) {
+	    cout << "이름 : " << temp.name << endl;
+	    cout << "나이 : " << temp.age << endl;
+	}
+	
+  	--------------------     */
+
+
 /*
 헤더부분의 요소
 1.함수의 원형
